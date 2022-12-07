@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de"
+    <head>
+        <title>Beispiel für die Cäsarverschlüsselung</title>
+    </head>
+
+    <body>
+        <script>
+
+         function caesarVer(klartext, schluessel) {
+
+            let geheimtext = "";
+            let buchstabe;
+            let alphabet = "abcdefghijklmnopqrstuvwxyz";
+            let index = 0;
+            let verschobenerbuchstabe;
+
+                while (index < klartext.length) {
+                    buchstabe = klartext[index];
+                    if ((alphabet.indexOf(buchstabe) + schluessel) > 25) {
+                        verschobenerbuchstabe = alphabet[(alphabet.indexOf(buchstabe) + schluessel) - 26]
+                    }
+                    else {
+                        verschobenerbuchstabe = alphabet[alphabet.indexOf(buchstabe) + schluessel];
+                    }
+
+                    geheimtext += verschobenerbuchstabe;
+                    index++;
+                }
+            return geheimtext;
+            }
+
+
+         function caesarEnt(geheimtext, schluessel) {
+
+            let klartext = "";
+            let buchstabe;
+            let alphabet = "abcdefghijklmnopqrstuvwxyz";
+            let index = 0;
+            let verschobenerbuchstabe;
+                
+                while (index < geheimtext.length) {
+                    buchstabe = geheimtext[index];
+                    if ((alphabet.indexOf(buchstabe) - schluessel) < 0) {//
+                        verschobenerbuchstabe = alphabet[(alphabet.indexOf(buchstabe) - schluessel) + 26]
+                    }
+                    else {
+                        verschobenerbuchstabe = alphabet[alphabet.indexOf(buchstabe) - schluessel];
+                    }
+
+                    klartext += verschobenerbuchstabe;
+                    index++;
+                }
+            return klartext;
+            }   
+
+        </script>
+    </body>
+</html>
